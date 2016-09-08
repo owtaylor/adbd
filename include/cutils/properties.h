@@ -35,8 +35,13 @@ extern "C" {
 ** WARNING: system/bionic/include/sys/system_properties.h also defines
 **          these, but with different names.  (TODO: fix that)
 */
+#ifdef PROP_NAME_MAX
 #define PROPERTY_KEY_MAX   PROP_NAME_MAX
 #define PROPERTY_VALUE_MAX  PROP_VALUE_MAX
+#else
+#define PROPERTY_KEY_MAX   32
+#define PROPERTY_VALUE_MAX  92
+#endif
 
 /* property_get: returns the length of the value which will never be
 ** greater than PROPERTY_VALUE_MAX - 1 and will always be zero terminated.
